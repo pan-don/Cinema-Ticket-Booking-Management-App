@@ -61,7 +61,14 @@ public class Film {
         public String getIdFilm() {
             return id_film;
         }
+<<<<<<< HEAD
     
+=======
+        public String getRuangan() { //tambahin getruanggan
+            return ruangan;
+        }
+
+>>>>>>> 207aa2b97b3dae7b8d03c54c4c624008088e8bde
         public int getTiketTerjual() {
             return tiketTerjual;
         }
