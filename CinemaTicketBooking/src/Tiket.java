@@ -1,3 +1,4 @@
+@SuppressWarnings("FieldMayBeFinal")
 public class Tiket {
     private Jadwal jadwal;
     private int jumlah;

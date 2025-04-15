@@ -1,5 +1,6 @@
 import java.util.*;
 
+@SuppressWarnings("FieldMayBeFinal")
 class Admin extends Person{
     private List<Film> listFilm;
     private List<Jadwal> listJadwal;
@@ -34,7 +35,7 @@ class Admin extends Person{
     }
 
     public void tambahJadwal(Jadwal jadwalBaru){
-        if(Jadwal.cekJadwalBentrok(jadwalBaru)){
+        if(Jadwal.cekJadwalBentrok(listJadwal, jadwalBaru)){
             System.out.println("Jadwal bentrok!!! Ganti waktu yang lain.");
         } else{
             listJadwal.add(jadwalBaru);
@@ -51,11 +52,12 @@ class Admin extends Person{
         }
     }
 
-
     public void laporanPenjualan(){
         System.out.println("========== Laporan Penjualan ==========");
         for(Film f: listFilm){
-            System.out.println("Film: "+f.getJudul() +" | Tiket Terjual: "+ f.getTiketTerjual() + " | Total Pendapatan: Rp."+(f,getHarga() * f.getTiketTerjual()));
+            System.out.println("Film            : "+f.getJudul());
+            System.out.println("Tiket terjual   : "+f.getTiketTerjual());
+            System.out.println("Total pendapatan: "+(f.getHarga()*f.getTiketTerjual()));
         }
     }
 
@@ -66,9 +68,4 @@ class Admin extends Person{
     public  List<Jadwal> getListJadwal(){
         return listJadwal;
     }
-
-    private int getHarga() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
 }

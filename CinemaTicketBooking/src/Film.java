@@ -1,3 +1,4 @@
+@SuppressWarnings("FieldMayBeFinal")
 public class Film {
     private String id_film;
     private String judul;
@@ -23,12 +24,12 @@ public class Film {
     }
 
     public void tampilkanFilm() {
-        System.out.println("ID Film: " + id_film);
-        System.out.println("Judul: " + judul);
-        System.out.println("Genre: " + genre);
-        System.out.println("Durasi: " + durasi + " menit");
-        System.out.println("Sinopsis: " + sinopsis);
-        System.out.println("Harga: Rp " + harga);
+        System.out.println("ID Film            : " + id_film);
+        System.out.println("Judul              : " + judul);
+        System.out.println("Genre              : " + genre);
+        System.out.println("Durasi             : " + durasi + " menit");
+        System.out.println("Sinopsis           : " + sinopsis);
+        System.out.println("Harga              : Rp " + harga);
         System.out.println("Ruangan            : " + ruangan);
         System.out.println("Kapasitas Tersedia : " + kapasitas);
         System.out.println("Tiket Terjual      : " + tiketTerjual);

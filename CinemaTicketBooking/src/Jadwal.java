@@ -1,8 +1,9 @@
 //import library bawaan java untuk tipe data tanggal
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+import java.util.*;
 //kelas nya, buat tau kapan film diputar
+
 public class Jadwal {
     //atribut idjadwal, nyimpen id jadwalnya
     private String idJadwal;
@@ -67,10 +68,13 @@ public class Jadwal {
         System.out.println("---------------------------------");
     }
 
-    // method cekJadwalBentrok(), buat melihat jadwalnya bentrok apa engga kan?
-    public boolean cekJadwalBentrok(Jadwal jadwalBaru) {
-        return this.tanggal.equals(jadwalBaru.getTanggal()) &&      //tanggal atau jam sama, pake equals karena tadi aku pake localdate sama localtime library bawaan java bukan int
-               this.waktu.equals(jadwalBaru.getWaktu()) &&
-               this.film.getRuangan().equals(jadwalBaru.getFilm().getRuangan()); //mengecek apakah ruangan sama, pake equals karena string
+    public static boolean cekJadwalBentrok(List<Jadwal> listJadwal, Jadwal jadwalBaru){
+        for(Jadwal s: listJadwal){
+            if(s.tanggal.equals(jadwalBaru.tanggal)
+            && s.waktu.equals(jadwalBaru.waktu)
+            && s.film.getRuangan().equalsIgnoreCase(jadwalBaru.film.getRuangan())
+            ){return true;}
+        }
+        return false;
     }
 }
