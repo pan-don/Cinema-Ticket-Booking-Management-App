@@ -1,20 +1,28 @@
+//import library bawaan java untuk tipe data tanggal
 import java.time.LocalDate;
+// sama tapi buat waktu atau jamnya
 import java.time.LocalTime;
 
+//kelas nya, buat tau kapan film diputar
 public class Jadwal {
+    //atribut idjadwal, nyimpen id jadwalnya
     private String idJadwal;
-    private Film film;           
+    //atribut film, nyimpen data film apa yang ditayangkan di jadwal ini. objeknya dari class film jadi ini kehubung sama class film
+    private Film film;  
+    //atribut tanggal, nyimpan tanggal dari library yang sudah di import         
     private LocalDate tanggal;
+    //atribut waktu, sama aja cuma jam nya
     private LocalTime waktu;
 
+    //konstruktor
     public Jadwal(String idJadwal, Film film, LocalDate tanggal, LocalTime waktu) {
-        this.idJadwal = idJadwal;
-        this.film = film;
-        this.tanggal = tanggal;
-        this.waktu = waktu;
+        this.idJadwal = idJadwal;   //id jawal
+        this.film = film;           //film
+        this.tanggal = tanggal;     //tanggal
+        this.waktu = waktu;         //waktu
     }
 
-    // Getter dan Setter
+    // getter setter jadwal buat ngambil dan mengubah nilai dari atribut idJadwal
     public String getIdJadwal() {
         return idJadwal;
     }
@@ -23,6 +31,7 @@ public class Jadwal {
         this.idJadwal = idJadwal;
     }
 
+    //getter setter film, sama aja kaya jadwal tapi ini buat film
     public Film getFilm() {
         return film;
     }
@@ -31,6 +40,7 @@ public class Jadwal {
         this.film = film;
     }
 
+    //getter setter tanggal, sama aja buat mengambil atau mengubah tanggal film tayang
     public LocalDate getTanggal() {
         return tanggal;
     }
@@ -39,6 +49,7 @@ public class Jadwal {
         this.tanggal = tanggal;
     }
 
+    //getter setter waktu, sama pokoknya
     public LocalTime getWaktu() {
         return waktu;
     }
@@ -47,22 +58,20 @@ public class Jadwal {
         this.waktu = waktu;
     }
 
-    // Method tampilkanJadwal()
+    // method tampilkanJadwal(), untuk menampilkan semua yang ingin di tampilkan kaya atribut yang di proposal
     public void tampilkanJadwal() {
-        System.out.println("ID Jadwal      : " + idJadwal);
-        System.out.println("Judul Film     : " + film.getJudul());
-        System.out.println("Ruangan        : " + film.getRuangan());
-        System.out.println("Tanggal Tayang : " + tanggal);
-        System.out.println("Waktu Tayang   : " + waktu);
+        System.out.println("ID Jadwal      : " + idJadwal);             //menampilkan id jadwal
+        System.out.println("Judul Film     : " + film.getJudul());      //menampilkan judul film
+        System.out.println("Ruangan        : " + film.getRuangan());    //menampilkan ruangan
+        System.out.println("Tanggal Tayang : " + tanggal);              //menampilkan tanggal
+        System.out.println("Waktu Tayang   : " + waktu);                //menampilkan waktu
         System.out.println("---------------------------------");
     }
 
-    // Method cekJadwalBentrok()
+    // method cekJadwalBentrok(), buat melihat jadwalnya bentrok apa engga kan?
     public boolean cekJadwalBentrok(Jadwal jadwalLain) {
-        return this.tanggal.equals(jadwalLain.getTanggal()) &&
+        return this.tanggal.equals(jadwalLain.getTanggal()) &&      //tanggal atau jam sama, pake equals karena tadi aku pake localdate sama localtime library bawaan java bukan int
                this.waktu.equals(jadwalLain.getWaktu()) &&
-               this.film.getRuangan().equals(jadwalLain.getFilm().getRuangan());
+               this.film.getRuangan().equals(jadwalLain.getFilm().getRuangan()); //mengecek apakah ruangan sama, pake equals karena string
     }
 }
-
-// none
