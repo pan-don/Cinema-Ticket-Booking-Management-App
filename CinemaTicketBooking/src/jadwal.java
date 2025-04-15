@@ -7,7 +7,6 @@ public class Jadwal {
     private LocalDate tanggal;
     private LocalTime waktu;
 
-    // Constructor
     public Jadwal(String idJadwal, Film film, LocalDate tanggal, LocalTime waktu) {
         this.idJadwal = idJadwal;
         this.film = film;
@@ -65,3 +64,5 @@ public class Jadwal {
                this.film.getRuangan().equals(jadwalLain.getFilm().getRuangan());
     }
 }
+
+// none
