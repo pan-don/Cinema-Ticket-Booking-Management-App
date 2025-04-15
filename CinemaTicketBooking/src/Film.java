@@ -61,7 +61,7 @@ public class Film {
         public String getIdFilm() {
             return id_film;
         }
-        public String getRuangan() {
+        public String getRuangan() { //tambahin getruanggan
             return ruangan;
         }
 
