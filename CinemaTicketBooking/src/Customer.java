@@ -1,7 +1,6 @@
 import java.util.*;
 
-// Class Customer merupakan turunan dari class Person
-public class Customer extends Person {
+public class Customer extends Person { //class customer adalah subclass dari person
     private String userId; // ID unik untuk masing-masing customer
     private List<Pemesanan> riwayatPemesanan; // Menyimpan daftar pemesanan customer
 
@@ -12,7 +11,7 @@ public class Customer extends Person {
     }
 
     // Metode untuk melakukan pemesanan tiket
-    public void pemesanan(List<Jadwal> daftarJadwal, Scanner scanner) {
+    public void pemesanan(List<Jadwal> daftarJadwal, Scanner scanner) { // Scaner scaner digunakan agar pengguna dapat memilih film, menentukan jumlah tiket, dan memilih petode pembayaran
         // Tampilkan daftar jadwal film yang tersedia
         System.out.println("Daftar Jadwal Film:");
         for (int i = 0; i < daftarJadwal.size(); i++) {
@@ -94,6 +93,7 @@ public class Customer extends Person {
         // Tampilkan semua riwayat pemesanan
         System.out.println("Riwayat Pemesanan:");
         for (Pemesanan p : riwayatPemesanan) {
+            // untuk mengeluarkan output riwayat pemesanan yang pernah dilakukan 
             System.out.println("- Film: " + p.getFilm().getJudul() +
                                " | Jadwal: " + p.getJadwal() +
                                " | Tiket: " + p.getJumlahTiket() +
