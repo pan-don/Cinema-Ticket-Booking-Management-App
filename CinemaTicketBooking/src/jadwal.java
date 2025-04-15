@@ -6,7 +6,7 @@ public class Jadwal {
     private Film film;           
     private LocalDate tanggal;
     private LocalTime waktu;
-
+    
     // Constructor
     public Jadwal(String idJadwal, Film film, LocalDate tanggal, LocalTime waktu) {
         this.idJadwal = idJadwal;
