@@ -11,7 +11,7 @@ public class Jadwal {
     private Film film;  
     //atribut tanggal, nyimpan tanggal dari library yang sudah di import         
     private LocalDate tanggal;
-    //atribut waktu, sama aja cuma jam nya
+    //atribut waktu, sama aja cuma jam nyaa
     private LocalTime waktu;
 
     //konstruktor
@@ -31,7 +31,7 @@ public class Jadwal {
         this.idJadwal = idJadwal;
     }
 
-    //getter setter film, sama aja kaya jadwal tapi ini buat film
+    //getter setter film, sama aja kaya jadwal tapi ini buat filmm
     public Film getFilm() {
         return film;
     }

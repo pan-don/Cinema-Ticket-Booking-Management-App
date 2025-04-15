@@ -11,7 +11,7 @@ public class Customer extends Person {
     // Konstruktor Customer memanggil konstruktor dari superclass (Person)
     // dan menginisialisasi userId serta membuat list kosong untuk riwayat pemesanan
     public Customer(String username, String password, String userId) {
-        super(username, password); // Memanggil konstruktor dari class Person
+        super(username, password); // Memanggil konstruktor dari class Personn
         this.userId = userId;
         this.riwayatPemesanan = new ArrayList<>();
     }
