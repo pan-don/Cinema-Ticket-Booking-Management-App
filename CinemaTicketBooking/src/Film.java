@@ -9,7 +9,6 @@ public class Film {
     private String ruangan;
     private int tiketTerjual;
     
-<<<<<<< HEAD
     public Film(String id_film, String judul, String genre, int durasi, String sinopsis,
                 double harga, int kapasitas, String ruangan) {
         this.id_film = id_film;
@@ -40,70 +39,6 @@ public class Film {
             kapasitas -= jumlah;
         } else {
             System.out.println("Kapasitas tidak cukup!");
-=======
-        public Film(String id_film, String judul, String genre, int durasi, String sinopsis,
-                    double harga, int kapasitas, String ruangan) {
-            this.id_film = id_film;
-            this.judul = judul;
-            this.genre = genre;
-            this.durasi = durasi;
-            this.sinopsis = sinopsis;
-            this.harga = harga;
-            this.kapasitas = kapasitas;
-            this.ruangan = ruangan;
-            this.tiketTerjual = 0;
-        }
-    
-        public void tampilkanFilm() {
-            System.out.println("ID Film: " + id_film);
-            System.out.println("Judul: " + judul);
-            System.out.println("Genre: " + genre);
-            System.out.println("Durasi: " + durasi + " menit");
-            System.out.println("Sinopsis: " + sinopsis);
-            System.out.println("Harga: Rp " + harga);
-            System.out.println("Ruangan: " + ruangan);
-            System.out.println("Kapasitas Tersedia: " + kapasitas);
-            System.out.println("Tiket Terjual: " + tiketTerjual);
-        }
-    
-        public void kurangKapasitas(int jumlah) {
-            if (kapasitas >= jumlah) {
-                kapasitas -= jumlah;
-            } else {
-                System.out.println("Kapasitas tidak cukup!");
-            }
-        }
-    
-        public void tambahTiketTerjual(int jumlah) {
-            tiketTerjual += jumlah;
-        }
-    
-        public double getHarga() {
-            return harga;
-        }
-    
-        public String getJudul() {
-            return judul;
-        }
-    
-        public int getKapasitas() {
-            return kapasitas;
-        }
-    
-        public String getIdFilm() {
-            return id_film;
-        }
-<<<<<<< HEAD
-    
-=======
-        public String getRuangan() { //tambahin getruanggan
-            return ruangan;
-        }
-
->>>>>>> 207aa2b97b3dae7b8d03c54c4c624008088e8bde
-        public int getTiketTerjual() {
-            return tiketTerjual;
->>>>>>> fcbfaeb85261efde24bd6962b6da7df5d2cba08a
         }
     }
     
