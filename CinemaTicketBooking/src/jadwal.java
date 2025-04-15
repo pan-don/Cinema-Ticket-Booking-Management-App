@@ -64,3 +64,5 @@ public class Jadwal {
                this.film.getRuangan().equals(jadwalLain.getFilm().getRuangan());
     }
 }
+
+// none
