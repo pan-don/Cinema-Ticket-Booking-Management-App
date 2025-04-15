@@ -47,7 +47,7 @@ public class Customer extends Person {
             System.out.println("Belum ada pesanan.");
         }
         
-        scanner.nextLine(); // Buang newline sebelumnya
+        scanner.nextLine(); 
         System.out.print("Pilih metode pembayaran (e.g., Dana/Ovo/Transfer): ");
         String metode = scanner.nextLine();
         System.out.println("Masukan uang pembayaran: ");
