@@ -1,45 +1,52 @@
-import java.util.*;
+import java.util.*; // Mengimpor semua class dari package java.util (termasuk List dan Scanner)
 
-public class Customer extends Person { //class customer adalah subclass dari person
+public class Customer extends Person { // Customer adalah subclass dari Person, mewarisi semua atribut & metode dari Person
     private String userId; // ID unik untuk masing-masing customer
-    private List<Pemesanan> riwayatPemesanan; // Menyimpan daftar pemesanan customer
+    private List<Pemesanan> riwayatPemesanan; // List untuk menyimpan riwayat pemesanan tiket
 
-    // Constructor untuk inisialisasi objek Customer
+    // Konstruktor untuk membuat objek Customer baru
     public Customer(String userId) {
-        this.userId = userId;
-        this.riwayatPemesanan = new ArrayList<>(); // Inisialisasi list pemesanan
+        this.userId = userId; // Set ID pengguna
+        this.riwayatPemesanan = new ArrayList<>(); // Inisialisasi list riwayat pemesanan
     }
 
     // Metode untuk melakukan pemesanan tiket
-    public void pemesanan(List<Jadwal> daftarJadwal, Scanner scanner) { // Scaner scaner digunakan agar pengguna dapat memilih film, menentukan jumlah tiket, dan memilih petode pembayaran
-        // Tampilkan daftar jadwal film yang tersedia
+    public void pemesanan(List<Jadwal> daftarJadwal, Scanner scanner) {
+        // Menampilkan seluruh daftar film dan jadwal yang tersedia
         System.out.println("Daftar Jadwal Film:");
         for (int i = 0; i < daftarJadwal.size(); i++) {
-            Jadwal jadwal = daftarJadwal.get(i);
+            Jadwal jadwal = daftarJadwal.get(i); // Mengambil objek Jadwal berdasarkan indeks
             System.out.println((i + 1) + ". " + jadwal.getFilm().getJudul() + " - " +
                                jadwal.getWaktu() + " | Kapasitas: " + jadwal.getKapasitas());
         }
 
-        // Input: pilih jadwal film berdasarkan nomor
+        // Input pilihan film dari pengguna (berdasarkan nomor)
         System.out.print("Pilih nomor film: ");
-        int pilihan = scanner.nextInt() - 1;
-        Jadwal jadwalDipilih = daftarJadwal.get(pilihan);
+        int pilihan = scanner.nextInt() - 1; // Dikurangi 1 karena indeks list dimulai dari 0
+        Jadwal jadwalDipilih = daftarJadwal.get(pilihan); // Menyimpan jadwal yang dipilih
 
-        // Input: jumlah tiket yang ingin dibeli
+        // Input jumlah tiket yang ingin dibeli
         System.out.print("Masukkan jumlah tiket: ");
         int jumlahTiket = scanner.nextInt();
 
-        // Validasi ketersediaan kapasitas
+        // Mengecek apakah kapasitas mencukupi untuk jumlah tiket yang diinginkan
         if (jadwalDipilih.getKapasitas() >= jumlahTiket) {
-            // Hitung total harga tiket
+            // Menghitung total harga tiket
             double totalHarga = jadwalDipilih.getHarga() * jumlahTiket;
-            // Kurangi kapasitas pada jadwal sesuai jumlah tiket yang dipesan
+
+            // Mengurangi kapasitas sesuai jumlah tiket yang dipesan
             jadwalDipilih.kurangiKapasitas(jumlahTiket);
 
-            // Buat objek pemesanan dan simpan ke riwayat
-            Pemesanan pesanan = new Pemesanan(jadwalDipilih.getFilm(), jadwalDipilih.getWaktu(), jumlahTiket, totalHarga);
-            riwayatPemesanan.add(pesanan);
+            // Membuat objek Pemesanan baru dan menambahkannya ke riwayat
+            Pemesanan pesanan = new Pemesanan(
+                jadwalDipilih.getFilm(), // pilih film
+                jadwalDipilih.getWaktu(), // pilih waktu tayang film
+                jumlahTiket,
+                totalHarga
+            );
+            riwayatPemesanan.add(pesanan); // Tambahkan ke riwayat
 
+            // Konfirmasi bahwa pemesanan berhasil
             System.out.println("Pemesanan berhasil. Total: " + totalHarga + " (Belum Dibayar)");
         } else {
             // Tampilkan pesan jika kapasitas tidak cukup
@@ -47,54 +54,53 @@ public class Customer extends Person { //class customer adalah subclass dari per
         }
     }
 
-    // Metode untuk melakukan pembayaran dari pesanan yang belum dibayar
+    // Metode untuk membayar semua pemesanan yang belum dibayar
     public void pembayaran(Scanner scanner) {
-        boolean adaYangBelumDibayar = false;
+        boolean adaYangBelumDibayar = false; // Flag untuk mengecek apakah ada pesanan yang belum lunas
 
         // Tampilkan daftar pesanan yang belum dibayar
         for (Pemesanan p : riwayatPemesanan) {
-            if (!p.isLunas()) {
+            if (!p.isLunas()) { // Cek apakah pesanan belum lunas
                 adaYangBelumDibayar = true;
                 System.out.println("Pesanan: " + p.getFilm().getJudul() + " | " + p.getJadwal() +
                                    " | Tiket: " + p.getJumlahTiket() + " | Total: " + p.getTotalHarga());
             }
         }
 
-        // Jika semua pesanan sudah dibayar, tampilkan pesan dan keluar dari metode
+        // Jika semua pesanan sudah lunas
         if (!adaYangBelumDibayar) {
             System.out.println("Tidak ada pesanan yang belum dibayar.");
-            return;
+            return; // Keluar dari metode
         }
 
-        // Input: pilih metode pembayaran
+        // Input metode pembayaran dari pengguna
         System.out.print("Pilih metode pembayaran (e.g., Dana/Ovo/Transfer): ");
-        scanner.nextLine(); // Konsumsi newline sisa input sebelumnya
-        String metode = scanner.nextLine();
+        scanner.nextLine(); // Membersihkan newline dari input sebelumnya
+        String metode = scanner.nextLine(); // Menerima input string metode pembayaran
 
-        // Simulasi proses pembayaran untuk setiap pesanan yang belum lunas
+        // Proses pembayaran untuk setiap pesanan yang belum lunas
         for (Pemesanan p : riwayatPemesanan) {
             if (!p.isLunas()) {
                 System.out.println("Memproses pembayaran untuk: " + p.getFilm().getJudul());
                 System.out.println("Metode: " + metode + " | Total: " + p.getTotalHarga());
-                p.setLunas(true); // Tandai pesanan sebagai lunas
+                p.setLunas(true); // Tandai sebagai lunas
                 System.out.println("Pembayaran berhasil!\n");
             }
         }
     }
 
-    // Metode untuk melihat riwayat pemesanan (baik yang sudah dibayar maupun belum)
+    // Metode untuk menampilkan seluruh riwayat pemesanan
     public void lihatRiwayat() {
-        // Jika tidak ada riwayat, tampilkan pesan
+        // Cek apakah riwayat masih kosong
         if (riwayatPemesanan.isEmpty()) {
             System.out.println("Riwayat pemesanan kosong.");
             return;
         }
 
-        // Tampilkan semua riwayat pemesanan
+        // Tampilkan semua data pemesanan
         System.out.println("Riwayat Pemesanan:");
         for (Pemesanan p : riwayatPemesanan) {
-            // untuk mengeluarkan output riwayat pemesanan yang pernah dilakukan 
-            System.out.println("- Film: " + p.getFilm().getJudul() +
+            System.out.println("- Film: " + p.getFilm().getJudul() + 
                                " | Jadwal: " + p.getJadwal() +
                                " | Tiket: " + p.getJumlahTiket() +
                                " | Total: " + p.getTotalHarga() +
