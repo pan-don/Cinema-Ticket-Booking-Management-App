@@ -11,11 +11,11 @@ public class Customer extends Person { //class customer adalah subclass dari per
     }
 
     // Metode untuk melakukan pemesanan tiket
-    public void pemesanan(List<Jadwal> daftarJadwal, Scanner scanner) { // Scaner scaner digunakan agar pengguna dapat memilih film, menentukan jumlah tiket, dan memilih petode pembayaran
+    public void pemesanan(List<temp> daftarJadwal, Scanner scanner) { // Scaner scaner digunakan agar pengguna dapat memilih film, menentukan jumlah tiket, dan memilih petode pembayaran
         // Tampilkan daftar jadwal film yang tersedia
         System.out.println("Daftar Jadwal Film:");
         for (int i = 0; i < daftarJadwal.size(); i++) {
-            Jadwal jadwal = daftarJadwal.get(i);
+            temp jadwal = daftarJadwal.get(i);
             System.out.println((i + 1) + ". " + jadwal.getFilm().getJudul() + " - " +
                                jadwal.getWaktu() + " | Kapasitas: " + jadwal.getKapasitas());
         }
@@ -23,7 +23,7 @@ public class Customer extends Person { //class customer adalah subclass dari per
         // Input: pilih jadwal film berdasarkan nomor
         System.out.print("Pilih nomor film: ");
         int pilihan = scanner.nextInt() - 1;
-        Jadwal jadwalDipilih = daftarJadwal.get(pilihan);
+        temp jadwalDipilih = daftarJadwal.get(pilihan);
 
         // Input: jumlah tiket yang ingin dibeli
         System.out.print("Masukkan jumlah tiket: ");

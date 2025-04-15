@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 //kelas nya, buat tau kapan film diputar
-public class Jadwal {
+public class temp {
     //atribut idjadwal, nyimpen id jadwalnya
     private String idJadwal;
     //atribut film, nyimpen data film apa yang ditayangkan di jadwal ini. objeknya dari class film jadi ini kehubung sama class film
@@ -15,7 +15,7 @@ public class Jadwal {
     private LocalTime waktu;
 
     //konstruktor
-    public Jadwal(String idJadwal, Film film, LocalDate tanggal, LocalTime waktu) {
+    public temp(String idJadwal, Film film, LocalDate tanggal, LocalTime waktu) {
         this.idJadwal = idJadwal;   //id jawal
         this.film = film;           //film
         this.tanggal = tanggal;     //tanggal
@@ -31,7 +31,7 @@ public class Jadwal {
         this.idJadwal = idJadwal;
     }
 
-    //getter setter film, sama aja kaya jadwal tapi ini buat film
+    //getter setter film, sama aja kaya jadwal tapi ini buat filmm
     public Film getFilm() {
         return film;
     }
@@ -69,7 +69,7 @@ public class Jadwal {
     }
 
     // method cekJadwalBentrok(), buat melihat jadwalnya bentrok apa engga kan?
-    public boolean cekJadwalBentrok(Jadwal jadwalLain) {
+    public boolean cekJadwalBentrok(temp jadwalLain) {
         return this.tanggal.equals(jadwalLain.getTanggal()) &&      //tanggal atau jam sama, pake equals karena tadi aku pake localdate sama localtime library bawaan java bukan int
                this.waktu.equals(jadwalLain.getWaktu()) &&
                this.film.getRuangan().equals(jadwalLain.getFilm().getRuangan()); //mengecek apakah ruangan sama, pake equals karena string
