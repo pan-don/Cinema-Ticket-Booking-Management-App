@@ -5,14 +5,12 @@ import java.util.*;
 public class Customer extends Person {
     // Deklarasi atribut private: userId untuk identitas pengguna
     // riwayatPemesanan untuk menyimpan daftar tiket yang telah dipesan
-    private String userId;
-    private List<Tiket> riwayatPemesanan;
+    private List<Tiket> riwayatPesanan;
 
     // Konstruktor Customer memanggil konstruktor dari superclass (Person)
     // dan menginisialisasi userId serta membuat list kosong untuk riwayat pemesanan
-    public Customer(String username, String password, String userId) {
-        super(username, password); // Memanggil konstruktor dari class Personn
-        this.userId = userId;
+    public Customer(String inputId, String inputUsername, String inputPassword) {
+        super(inputId, inputUsername, inputPassword); // Memanggil konstruktor dari class Personn
         this.riwayatPemesanan = new ArrayList<>();
     }
 
@@ -104,18 +102,18 @@ public class Customer extends Person {
     // Metode untuk menampilkan semua riwayat pemesanan
     public void LihatRiwayat() {
         // Jika belum ada pemesanan
-        if (riwayatPemesanan.isEmpty()) {
+        if (riwayatPesanan.isEmpty()) {
             System.out.println("Riwayat pemesanan kosong.");
-            return;
+        } else{
+            // Menampilkan setiap pemesanan yang telah dilakukan
+            System.out.println("========== Riwayat Pemesanan ==========");
+            for (Tiket t : riwayatPesanan) {
+                System.out.println("- Film: " + t.getJadwal().getFilm().getJudul() +
+                                   " | Jadwal: " + t.getJadwal().getWaktu() +
+                                   " | Total: " + t.getHargaTotal() +
+                                   " | Status: " + (t.isLunas() ? "Lunas" : "Belum Dibayar"));
+            }  
         }
 
-        // Menampilkan setiap pemesanan yang telah dilakukan
-        System.out.println("Riwayat Pemesanan:");
-        for (Tiket t : riwayatPemesanan) {
-            System.out.println("- Film: " + t.getJadwal().getFilm().getJudul() +
-                               " | Jadwal: " + t.getJadwal().getWaktu() +
-                               " | Total: " + t.getHargaTotal() +
-                               " | Status: " + (t.isLunas() ? "Lunas" : "Belum Dibayar"));
-        }
     }
 }

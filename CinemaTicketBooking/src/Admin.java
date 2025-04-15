@@ -12,7 +12,7 @@ class Admin extends Person{
 
     public void tambahFilm(Film inputFilm){
         listFilm.add(inputFilm);
-        System.out.println("Film \""+ inputFilm.getNama() +"\" berhasil ditambahkan.");
+        System.out.println("Film \""+ inputFilm.getJudul() +"\" berhasil ditambahkan.");
     }
 
     public void updateFilm(int index, Film filmBaru){
@@ -27,26 +27,26 @@ class Admin extends Person{
     public void hapusFilm(int index){
         if(index >= 0 && index < listFilm.size()){
             Film filmRemoved = listFilm.remove(index);
-            System.out.println("Film \""+ filmRemoved.getNama()+"\" berhasil dihapus.");
+            System.out.println("Film \""+ filmRemoved.getJudul()+"\" berhasil dihapus.");
         } else{
             System.out.println("Indeks tidak valid. Film gagal dihapus!!!");
         }
     }
 
     public void tambahJadwal(Jadwal jadwalBaru){
-        if(Jadwal.cekJadwalBentrok(listJadwal, jadwalBaru)){
+        if(Jadwal.cekJadwalBentrok(jadwalBaru)){
             System.out.println("Jadwal bentrok!!! Ganti waktu yang lain.");
         } else{
             listJadwal.add(jadwalBaru);
-            System.out.println("Jadwal film \""+ jadwalBaru.getFilm().getNama()+"\" berhasil ditambahkan.");
+            System.out.println("Jadwal film \""+ jadwalBaru.getFilm().getJudul()+"\" berhasil ditambahkan.");
         }
     }
 
     public void hapusJadwal(String namaFilm){
         for(int i=0; i < listJadwal.size(); i++){
-            if(listJadwal.get(i).getFilm().getNama().equalsIgnoreCase(namaFilm)){
+            if(listJadwal.get(i).getFilm().getJudul().equalsIgnoreCase(namaFilm)){
                 listJadwal.remove(i);
-                System.out.println("Jadwal film \""+ namaFilm +\" berhasil dihapus");
+                System.out.println("Jadwal film \""+ namaFilm +"\" berhasil dihapus");
             }
         }
     }
@@ -55,9 +55,7 @@ class Admin extends Person{
     public void laporanPenjualan(){
         System.out.println("========== Laporan Penjualan ==========");
         for(Film f: listFilm){
-            System.out.println("Film: "+f.getNama()+
-            " | Tiket Terjual: "+f.getTiketTerjual()+
-            " | Total Pendapatan: Rp."+(f,getHarga() * f.getTiketTerjual()));
+            System.out.println("Film: "+f.getJudul() +" | Tiket Terjual: "+ f.getTiketTerjual() + " | Total Pendapatan: Rp."+(f,getHarga() * f.getTiketTerjual()));
         }
     }
 
@@ -67,6 +65,10 @@ class Admin extends Person{
 
     public  List<Jadwal> getListJadwal(){
         return listJadwal;
+    }
+
+    private int getHarga() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
