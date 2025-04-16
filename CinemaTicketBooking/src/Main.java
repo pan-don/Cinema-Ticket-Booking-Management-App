@@ -36,23 +36,36 @@ public class Main {
             int pilih = scanner.nextInt();
 
             switch (pilih) {
-                case 1:
+                case 1 -> {
                     admin.tambahFilm(scanner);
-                case 2:
+                    break;
+                }
+                case 2 -> {
                     admin.hapusFilm(scanner);
-                case 3:
+                    break;
+                }
+                case 3 -> {
                     admin.updateFilm(scanner);
-                case 4:
+                    break;
+                }
+                case 4 -> {
                     admin.tambahJadwal(scanner);
-                case 5:
+                    break;
+                }
+                case 5 -> {
                     admin.hapusJadwal(scanner);
-                case 6:
+                    break;
+                }
+                case 6 -> {
                     admin.laporanPenjualan();
-                case 7:
+                    break;
+                }
+                case 7 -> {
                     System.out.println("Logout dari admin...");
                     lanjut = false;
-                    default:
-                    System.out.println("Pilihan tidak valid.");
+                    break;
+                }
+                default -> System.out.println("Pilihan tidak valid.");
             }
         }
     }
@@ -75,7 +88,7 @@ public class Main {
     private static void menuCustomer(Scanner scanner, Customer customer){
         boolean lanjut = true;
         while(lanjut){
-            System.out.println("========== MENU ADMIN ==========");
+            System.out.println("========== MENU CUSTOMER ==========");
             System.out.println("1.  Pemesanan film");
             System.out.println("2.  Pembayaran film");
             System.out.println("3.  Riwayat pemesanan");
@@ -84,17 +97,23 @@ public class Main {
             int pilih = scanner.nextInt();
 
             switch (pilih) {
-                case 1:
+                case 1 -> {
                     customer.pemesanan(admin.getListJadwal(), scanner);
-                case 2:
+                    break;
+                }
+                case 2 -> {
                     customer.pembayaran(scanner);
-                case 3:
+                }
+                case 3 -> {
                     customer.lihatRiwayat();
-                case 4:
+                    break;
+                }
+                case 4 -> {
                     System.out.println("Logout dari customer...");
                     lanjut = false;
-                    default:
-                    System.out.println("Pilihan tidak valid.");
+                    break;
+                }
+                default ->System.out.println("Pilihan tidak valid.");
             }
         }
     }
@@ -136,17 +155,24 @@ public class Main {
             int pilih = scanner.nextInt();
 
             switch (pilih) {
-                case 1:
+                case 1 -> {
                     loginAdmin(scanner);
-                case 2:
+                    break;
+                }
+                case 2 -> {
                     loginCustomer(scanner);
-                case 3:
+                    break;
+                }
+                case 3 -> {
                     registrasiCustomer(scanner);
-                case 4:
+                    break;
+                }
+                case 4 -> {
                     System.out.println("Logout berhasil!!!");
                     running = false;
-                default:
-                    System.out.println("Pilihan tidak valid.");
+                    break;
+                }
+                default -> System.out.println("Pilihan tidak valid.");
             }
         }
     }

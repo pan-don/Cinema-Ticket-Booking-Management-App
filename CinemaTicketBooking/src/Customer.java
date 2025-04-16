@@ -3,6 +3,7 @@ import java.util.*;
 @SuppressWarnings("FieldMayBeFinal")
 public class Customer extends Person {
     private List<Tiket> riwayatPemesanan;
+    private Tiket tiketPesanan;
 
     public Customer(String inputId, String inputUsername, String inputPassword) {
         super(inputId, inputUsername, inputPassword);
@@ -14,8 +15,9 @@ public class Customer extends Person {
         for (int i = 0; i < listJadwal.size(); i++) {
             Jadwal jadwal = listJadwal.get(i);
             System.out.println((i + 1) + ". " + jadwal.getFilm().getJudul() +
-                               " - " + jadwal.getWaktu() +
-                               " | Kapasitas: " + jadwal.getFilm().getKapasitas());
+                               " | Jadwal: " + jadwal.getWaktu() +
+                               " | Kapasitas: " + jadwal.getFilm().getKapasitas()+
+                               " | Harga: " + jadwal.getFilm().getHarga());
         }
 
         System.out.print("Pilih nomor film: ");
@@ -35,8 +37,9 @@ public class Customer extends Person {
 
         if (jadwalDipilih.getFilm().getKapasitas() >= jumlahTiket) {
             Tiket tiket = new Tiket(jadwalDipilih, jumlahTiket);
+            this.tiketPesanan = tiket;
             riwayatPemesanan.add(tiket);
-            System.out.println("Pemesanan berhasil. Total: Rp" + tiket.getHargaTotal() + " (Belum Dibayar)");
+            System.out.println("Pemesanan berhasil (Belum dibayar)");
         } else {
             System.out.println("Kapasitas tidak mencukupi.");
         }
@@ -50,6 +53,7 @@ public class Customer extends Person {
         scanner.nextLine(); 
         System.out.print("Pilih metode pembayaran (e.g., Dana/Ovo/Transfer): ");
         String metode = scanner.nextLine();
+        System.out.println("Total harga pesanan: Rp."+tiketPesanan.getHargaTotal());
         System.out.println("Masukan uang pembayaran: ");
         double totalBayar = scanner.nextDouble();
 
@@ -73,6 +77,7 @@ public class Customer extends Person {
             System.out.println("========== Riwayat Pemesanan ==========");
             for (Tiket t : riwayatPemesanan) {
                 System.out.println("- Film: " + t.getJadwal().getFilm().getJudul() +
+                                   " | Ruangan: "+ t.getJadwal().getFilm().getRuangan() +
                                    " | Jadwal: " + t.getJadwal().getWaktu() +
                                    " | Total: " + t.getHargaTotal());
             }  

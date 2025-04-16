@@ -25,12 +25,14 @@ class Admin extends Person{
         String genre = scanner.nextLine();
         System.out.println("Durasi      : ");
         int durasi = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Sinopsis    : ");
         String sinopsis = scanner.nextLine();
         System.out.println("Harga       : ");
         double harga = scanner.nextDouble();
         System.out.println("Kapasitas   : ");
         int kapasitas = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Ruangan     : ");
         String ruangan = scanner.nextLine();
 
@@ -43,28 +45,29 @@ class Admin extends Person{
     public void updateFilm(Scanner scanner){
         tampilkanDaftarFilm();
         System.out.println("Pilih nomor film: ");
-        int index = scanner.nextInt();
+        int index = scanner.nextInt() - 1;
 
         if(index >= 0 && index < listFilm.size()){
             Film filmLama = listFilm.get(index);
 
-            System.out.println("========== UPDATE FILM "+ filmLama.getJudul() +"==========");
-            System.out.println("Judul       : ");
-            String judul = scanner.nextLine();
+            System.out.println("========== UPDATE FILM "+ filmLama.getJudul() +" ==========");
+            scanner.nextLine();
             System.out.println("Genre       : ");
             String genre = scanner.nextLine();
             System.out.println("Durasi      : ");
             int durasi = scanner.nextInt();
+            scanner.nextLine();
             System.out.println("Sinopsis    : ");
             String sinopsis = scanner.nextLine();
             System.out.println("Harga       : ");
             double harga = scanner.nextDouble();
             System.out.println("Kapasitas   : ");
             int kapasitas = scanner.nextInt();
+            
             System.out.println("Ruangan     : ");
             String ruangan = scanner.nextLine();
     
-            Film filmBaru = new Film(filmLama.getIdFilm(), judul, genre, durasi, sinopsis, harga, kapasitas, ruangan);
+            Film filmBaru = new Film(filmLama.getIdFilm(), filmLama.getJudul(), genre, durasi, sinopsis, harga, kapasitas, ruangan);
             listFilm.set(index, filmBaru);
             System.out.println("Film berhasil diperbaharui.");
         } else{
@@ -75,7 +78,7 @@ class Admin extends Person{
     public void hapusFilm(Scanner scanner){
         tampilkanDaftarFilm();
         System.out.println("Pilih nomor film: ");
-        int index = scanner.nextInt();
+        int index = scanner.nextInt() - 1;
 
         if(index >= 0 && index < listFilm.size()){
             Film filmRemoved = listFilm.remove(index);
@@ -93,7 +96,7 @@ class Admin extends Person{
 
         tampilkanDaftarFilm();
         System.out.println("Pilih nomor film: ");
-        int index = scanner.nextInt();
+        int index = scanner.nextInt() - 1;
         scanner.nextLine();
 
         if(index < 0 || index >= listFilm.size()){
@@ -122,7 +125,7 @@ class Admin extends Person{
     public void hapusJadwal(Scanner scanner){
         tampilkanJadwal();
         System.out.println("Pilih nomor film: ");
-        int index = scanner.nextInt();
+        int index = scanner.nextInt() - 1;
 
         if(index >= 0 && index < listJadwal.size()){
             Jadwal jadwalRemoved = listJadwal.remove(index);
@@ -144,7 +147,7 @@ class Admin extends Person{
     public void tampilkanDaftarFilm(){
         System.out.println("========== Daftar Film ==========");
         for(int i=0; i < listFilm.size(); i++){
-            System.out.println(i+".  "+listFilm.get(i).getJudul());
+            System.out.println((i+1)+".  "+listFilm.get(i).getJudul());
         }
     }
 
@@ -152,7 +155,7 @@ class Admin extends Person{
         System.out.println("========== Jadwal Film ==========");
         for(int i=0; i < listJadwal.size(); i++){
             Jadwal jadwal = listJadwal.get(i);
-            System.out.println(i+".  "+jadwal.getFilm().getJudul()+" | "+jadwal.getTanggal());
+            System.out.println((i+1)+".  "+jadwal.getFilm().getJudul()+" | "+jadwal.getTanggal());
         }
     }
 
