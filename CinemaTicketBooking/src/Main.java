@@ -1,5 +1,7 @@
 import java.util.*;
 
+
+@SuppressWarnings("FieldMayBeFinal")
 public class Main {
     private static List<Customer> daftaCustomers = new ArrayList<>();
     private static Admin admin = new Admin("001", "admin", "admin123");
@@ -14,12 +16,46 @@ public class Main {
         String password = scanner.nextLine();
         
         if(admin.getUsername().equals(username) && admin.getPassoword().equals(password)){
-            // menuAdmin(scanner);
+            menuAdmin(scanner);
         } else{
             System.out.println("Login gagal");
         }
-        
-        
+    }
+
+    private static void menuAdmin(Scanner scanner){
+        boolean lanjut = true;
+        while(lanjut){
+            System.out.println("========== MENU ADMIN ==========");
+            System.out.println("1.  Tambah film");
+            System.out.println("2.  Hapus film");
+            System.out.println("3.  Update film");
+            System.out.println("4.  Tambah jadwal");
+            System.out.println("5.  Hapus jadwal");
+            System.out.println("6.  Laporan Penjualan");
+            System.out.println("7.  Logout");
+            System.out.println("Pilih menu: ");
+            int pilih = scanner.nextInt();
+
+            switch (pilih) {
+                case 1:
+                    admin.tambahFilm(scanner);
+                case 2:
+                    admin.hapusFilm(scanner);
+                case 3:
+                    admin.updateFilm(scanner);
+                case 4:
+                    admin.tambahJadwal(scanner);
+                case 5:
+                    admin.hapusJadwal(scanner);
+                case 6:
+                    admin.laporanPenjualan();
+                case 7:
+                    System.out.println("Logout dari admin...");
+                    lanjut = false;
+                    default:
+                    System.out.println("Pilihan tidak valid.");
+            }
+        }
     }
 
     // fungsi untuk login sebagai customer
@@ -36,7 +72,7 @@ public class Main {
             System.out.println("4. Keluar");
             System.out.println("Pilih: ");
             int pilih = scanner.nextInt();
-
+            
             switch (pilih) {
                 case 1:
                     pemesanan(List<Jadwal> listJadwal, Scanner scanner);
