@@ -3,9 +3,8 @@ import java.util.*;
 
 @SuppressWarnings("FieldMayBeFinal")
 public class Main {
-    private static List<Customer> daftaCustomers = new ArrayList<>();
+    private static List<Customer> daftarCustomers = new ArrayList<>();
     private static Admin admin = new Admin("001", "admin", "admin123");
-    private static Customer customer = new Customer(" ", " ", " ");
 
     // fungsi untuk login sebagai admin
     private static void loginAdmin(Scanner scanner){
@@ -16,13 +15,13 @@ public class Main {
         String password = scanner.nextLine();
         
         if(admin.getUsername().equals(username) && admin.getPassoword().equals(password)){
-            menuAdmin(scanner);
+            menuAdmin(scanner, admin);
         } else{
             System.out.println("Login gagal");
         }
     }
 
-    private static void menuAdmin(Scanner scanner){
+    private static void menuAdmin(Scanner scanner, Admin admin){
         boolean lanjut = true;
         while(lanjut){
             System.out.println("========== MENU ADMIN ==========");
@@ -58,32 +57,44 @@ public class Main {
         }
     }
 
-    // fungsi untuk login sebagai customer
+    
     private static void loginCustomer(Scanner scanner){
-        Scanner scanner = new Scanner(System.in);
-        boolean running = true;
+        scanner.nextLine();
+        System.out.println("Input username: ");
+        String username = scanner.nextLine();
+        System.out.println("Input password: ");
+        String password = scanner.nextLine();
+        
+        for(Customer i: daftarCustomers){
+            if(i.getUsername().equals(username) && i.getPassoword().equals(password)){
+                menuCustomer(scanner, i);
+            }   
+        }
+        System.out.println("Login gagal");
+    }
 
-        // sistem login
-        while(running){
-            System.out.println("========== SISTEM PEMESANAN TIKET BIOSKOP ==========");
-            System.out.println("1. Pemesanan");
-            System.out.println("2. Pembayaran");
-            System.out.println("3. Lihat Riwayat");
-            System.out.println("4. Keluar");
-            System.out.println("Pilih: ");
+    private static void menuCustomer(Scanner scanner, Customer customer){
+        boolean lanjut = true;
+        while(lanjut){
+            System.out.println("========== MENU ADMIN ==========");
+            System.out.println("1.  Pemesanan film");
+            System.out.println("2.  Pembayaran film");
+            System.out.println("3.  Riwayat pemesanan");
+            System.out.println("4.  Logout");
+            System.out.println("Pilih menu: ");
             int pilih = scanner.nextInt();
-            
+
             switch (pilih) {
                 case 1:
-                    pemesanan(List<Jadwal> listJadwal, Scanner scanner);
+                    customer.pemesanan(admin.getListJadwal(), scanner);
                 case 2:
-                    pembayaran(Scanner scanner);
+                    customer.pembayaran(scanner);
                 case 3:
-                    LihatRiwayat();
+                    customer.lihatRiwayat();
                 case 4:
-                    System.out.println("Logout berhasil!!!");
-                    running = false;
-                default:
+                    System.out.println("Logout dari customer...");
+                    lanjut = false;
+                    default:
                     System.out.println("Pilihan tidak valid.");
             }
         }
@@ -93,16 +104,23 @@ public class Main {
     // fungsi untuk registrasi customer
     private static void registrasiCustomer(Scanner scanner){
         scanner.nextLine();
-        System.out.println("Input username: ");
-        String username = scanner.nextLine();
-        System.out.println("Input password: ");
-        String password = scanner.nextLine();
-        
-        if(Customer.getUsername().equals(username) && Customer.getPassoword().equals(password)){
-            // menuCustomer(scanner);
-        } else{
-            System.out.println("Login gagal");
+        System.out.println("Input ID customer: ");
+        String idBaru = scanner.nextLine();
+        System.out.println("Input username baru: ");
+        String usernameBaru = scanner.nextLine();
+        System.out.println("Input password baru: ");
+        String passwordBaru = scanner.nextLine();
+    
+        for (Customer i : daftarCustomers) {
+            if (i.getId().equals(idBaru) || i.getUsername().equals(usernameBaru)) {
+                System.out.println("Registrasi gagal. ID atau username sudah digunakan.");
+                return;
+            }
         }
+
+        Customer c = new Customer(idBaru, usernameBaru, passwordBaru);
+        daftarCustomers.add(c);
+        System.out.println("Registrasi berhasil.");
     }
 
 

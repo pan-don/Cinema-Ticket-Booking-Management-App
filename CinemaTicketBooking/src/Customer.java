@@ -65,7 +65,7 @@ public class Customer extends Person {
         }
     }
 
-    public void LihatRiwayat() {
+    public void lihatRiwayat() {
         if (riwayatPemesanan.isEmpty()) {
             System.out.println("Riwayat pemesanan kosong.");
         } else{
