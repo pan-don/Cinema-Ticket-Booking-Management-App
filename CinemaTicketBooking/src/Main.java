@@ -57,7 +57,6 @@ public class Main {
         }
     }
 
-    
     private static void loginCustomer(Scanner scanner){
         scanner.nextLine();
         System.out.println("Input username: ");
@@ -99,8 +98,7 @@ public class Main {
             }
         }
     }
-    
-    
+     
     // fungsi untuk registrasi customer
     private static void registrasiCustomer(Scanner scanner){
         scanner.nextLine();
@@ -122,7 +120,6 @@ public class Main {
         daftarCustomers.add(c);
         System.out.println("Registrasi berhasil.");
     }
-
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
