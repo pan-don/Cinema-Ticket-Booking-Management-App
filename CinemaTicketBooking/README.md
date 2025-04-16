@@ -1,6 +1,6 @@
 ## PEMBUATAN APLIKASI MANAJEMEN PEMESANAN TIKET BIOSKOP BERBASIS WEBSITE  
 ## A. Tujuan
-
+Melakukan pengembangan aplikasi berbasis website untuk mempermudah proses pemesanan tiket bioskop secara digital. Aplikasi ini memungkinkan pelanggan untuk memilih film, melihat jadwal tayang, memesan tiket, serta melakukan pembayaran. Sementara itu, admin dapat mengelola daftar film, jadwal tayang, dan melakukan pelaporan penjualan tiket.
 ## B. List Fitur 
 Pada aplikasi ini terdapat beberapa fitur untuk menunjang fungsi pada penyelesaian tugas 
 booking tiket bioskop. Fitur-fitur tersebut diantaranya adalah : 
