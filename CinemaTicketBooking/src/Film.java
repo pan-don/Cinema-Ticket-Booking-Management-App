@@ -1,6 +1,6 @@
 @SuppressWarnings("FieldMayBeFinal")
-public class Film {
-    private String id_film;
+public class Film { //class yang menyimpan semua informasi dari sebuah film di dalam sistem
+    private String id_film; // menyimpan data atau informasi yang diinputkan tentang film
     private String judul;
     private String genre;
     private int durasi;
@@ -11,7 +11,7 @@ public class Film {
     private int tiketTerjual;
     
     public Film(String id_film, String judul, String genre, int durasi, String sinopsis,
-                double harga, int kapasitas, String ruangan) {
+                double harga, int kapasitas, String ruangan) { // konstruktor dipanggil saat akan membuat objek film, disini atribut akan diinisialisasi berdasarkan nilai yang diberikan saat pemanggilan konstruktor,tiket di set default 0 karena tiket belum terjual saat film dibuat
         this.id_film = id_film;
         this.judul = judul;
         this.genre = genre;
@@ -23,7 +23,7 @@ public class Film {
         this.tiketTerjual = 0;
     }
 
-    public void tampilkanFilm() {
+    public void tampilkanFilm() { // method ini berfungsi untuk menampilkan informai lengkap tentang film 
         System.out.println("ID Film            : " + id_film);
         System.out.println("Judul              : " + judul);
         System.out.println("Genre              : " + genre);
@@ -35,7 +35,7 @@ public class Film {
         System.out.println("Tiket Terjual      : " + tiketTerjual);
     }
     
-    public void kurangKapasitas(int jumlah) {
+    public void kurangKapasitas(int jumlah) { // method Digunakan untuk mengurangi jumlah kapasitas kursi saat tiket dipesan, kalau nilainya negatif (penuh) akan langsung muncul peringatan kapasitas tidak cukup
         if (kapasitas >= jumlah) {
             kapasitas -= jumlah;
         } else {
@@ -43,12 +43,12 @@ public class Film {
         }
     }
     
-    public void tambahTiketTerjual(int jumlah) {
+    public void tambahTiketTerjual(int jumlah) { // Menambahkan jumlah tiket yang berhasil terjual, method ini dipanggil saat pemesanan tiket berhasil dilakukan
         tiketTerjual += jumlah;
     }
     
-    public double getHarga() {
-        return harga;
+    public double getHarga() { //getter disini digunakan untuk mengakses nilai atribut private
+        return harga; // mengambil harga tiket, judul film, jumlah kursi yang tersisa, id film, jumlah tiket terjual, nomor ruangan
     }
     
     public String getJudul() {
