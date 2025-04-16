@@ -75,11 +75,11 @@ public class Main {
             
             switch (pilih) {
                 case 1:
-                    pemesanan(List<Jadwal> listJadwal, Scanner scanner);
+                    customer.pemesanan(List<Jadwal> listJadwal, Scanner scanner);
                 case 2:
-                    pembayaran(Scanner scanner);
+                    customer.pembayaran(Scanner scanner);
                 case 3:
-                    LihatRiwayat();
+                    customer.LihatRiwayat();
                 case 4:
                     System.out.println("Logout berhasil!!!");
                     running = false;
