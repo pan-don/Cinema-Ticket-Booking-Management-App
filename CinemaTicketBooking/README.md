@@ -1,5 +1,5 @@
 ## PEMBUATAN APLIKASI MANAJEMEN PEMESANAN TIKET BIOSKOP BERBASIS WEBSITE  
-## B. List Fitur 
+## A. List Fitur 
 Pada aplikasi ini terdapat beberapa fitur untuk menunjang fungsi pada penyelesaian tugas 
 booking tiket bioskop. Fitur-fitur tersebut diantaranya adalah : 
 #### 1. Manajemen Pengguna (User dan Admin): Kelas terkait person, customer, admin 
